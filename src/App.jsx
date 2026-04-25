@@ -1,5 +1,5 @@
-import SplashScreen from "./components/SplashScreen";
-function App() {
-  return <SplashScreen />;
+import Map from "./components/Map";
+
+export default function App() {
+  return <Map />;
 }
-export default App

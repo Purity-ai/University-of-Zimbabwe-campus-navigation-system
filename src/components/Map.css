@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #1a3c8e;
+
+}
+
+.map-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    border: 8px solid #1a3c8e;
+    overflow: hidden;
+}
+
+/* Blue Header at the top */
+.header {
+    background-color: #1a3c8e;
+    border-bottom: 3px solid #3182ce;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: white;
+    z-index: 10;
+}
+
+.header img {
+    height: 45px;
+}
+
+.header h2 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-family: sans-serif;
+}
+
+/* Floating Search Bar */
+.search-container {
+    position: absolute;
+    top: 90px;
+    /* Moves it just below the header */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 1000;
+    width: 90%;
+    max-width: 450px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    background-color: #1a3c8e;
+    border: none;
+    padding: 12px 15px;
+    color: white;
+    font-size: 14px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.search-button {
+    background-color: #a3c9f8;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+/* Force the Leaflet map to fill the remaining space */
+.leaflet-container {
+    flex-grow: 1;
+    width: 100%;
+    height: 100% !important;
+}
