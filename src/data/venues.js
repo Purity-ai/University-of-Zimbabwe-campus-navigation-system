@@ -62,7 +62,7 @@ const venues = [
     ]
   },
   {
-    name: "Faculty of Commerce",
+    name: "Faculty of Arts",
     position: [-17.7843, 31.0515],
     rooms: [
       { name: "Accountancy Department", description: "1st floor, Room CM-101. Up the main stairs, turn left." },
@@ -72,7 +72,7 @@ const venues = [
     ]
   },
   {
-    name: "Faculty of Education",
+    name: "Faculty of Arts",
     position: [-17.7858, 31.0528],
     rooms: [
       { name: "Educational Psychology Lab", description: "Ground floor, Room ED-01. Left wing from the main entrance." },
