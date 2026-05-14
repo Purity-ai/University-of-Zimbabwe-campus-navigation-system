@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase"; // adjust path if needed
+import { db } from "../firebase";
 
 const Pathways = () => {
   const [pathways, setPathways] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchPathways = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, "pathways"));
-
-      const data = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setPathways(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching pathways:", error);
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchPathways = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "pathways"));
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPathways(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching pathways:", error);
+        setLoading(false);
+      }
+    };
+
     fetchPathways();
   }, []);
 
