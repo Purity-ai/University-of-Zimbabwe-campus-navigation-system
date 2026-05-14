@@ -1,29 +1,15 @@
-
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-import {
-    MapContainer,
-    TileLayer,
-    Marker,
-    Popup
-} from "react-leaflet";
-
-import "leaflet/dist/leaflet.css";
-
-
 import logo from "../assets/images/University_of_Zimbabwe_LOGO.png";
-
 import "./Map.css";
 import { useState } from "react";
 import PopularVenues from "./PopularVenues";
 import venues from "./venues";
 import { useNavigate } from "react-router-dom";
-
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -52,13 +38,6 @@ function CoordPicker() {
     });
 
     if (!coords) return null;
-
-import venues from "../data/venues";
-
-export default function Map() {
-
-    const universityOfZimbabwe = [-17.7816, 31.0544];
-
 
     return (
         <div
@@ -166,7 +145,6 @@ export default function Map() {
             return;
         }
 
-
         const matches = venues.filter((v) =>
             v.name.toLowerCase().includes(value.toLowerCase())
         );
@@ -187,7 +165,6 @@ export default function Map() {
         setSuggestions([]);
         setShowSuggestions(false);
 
-        // Empty input check
         if (searchQuery.trim() === "") {
             setSearchError("Please enter a building name to search.");
             return;
@@ -263,20 +240,10 @@ export default function Map() {
 
     return (
         <div className="map-container">
-
-            {/* HEADER */}
-
             <div className="header">
-                <img
-                    src={logo}
-                    alt="University of Zimbabwe Logo"
-                />
-
-                <h2>
-                    University of Zimbabwe Campus Navigator
-                </h2>
+                <img src={logo} alt="University of Zimbabwe Logo" />
+                <h2>University of Zimbabwe Campus Navigator</h2>
             </div>
-
 
             <div className="content-layout">
                 <PopularVenues onVenueClick={handleVenueClick} />
@@ -288,7 +255,6 @@ export default function Map() {
                         </div>
                     )}
 
-                    {/* SEARCH BAR + DROPDOWN */}
                     <div className="search-wrapper">
                         <div className="search-container">
                             <input
@@ -321,32 +287,6 @@ export default function Map() {
                             </div>
                         )}
 
-            {/* SEARCH BAR */}
-            <div className="search-container">
-
-                <input
-                    className="search-bar"
-                    type="text"
-                    placeholder="Search for a building"
-                />
-
-                <button className="search-button">
-                    Search
-                </button>
-
-            </div>
-
-            {/* MAP */}
-            <MapContainer
-                center={universityOfZimbabwe}
-                zoom={16}
-                style={{
-                    height: "400px",
-                    width: "100%"
-                }}
-            >
-
-
                         {searchError && (
                             <div className="search-error">
                                 ⚠️ {searchError}
@@ -354,8 +294,6 @@ export default function Map() {
                         )}
                     </div>
 
-
-                    {/* MODAL */}
                     {showPopup && (
                         <div className="custom-popup">
                             <div className="popup-box">
@@ -426,44 +364,6 @@ export default function Map() {
                     </MapContainer>
                 </div>
             </div>
-
-                {/* LOOP THROUGH VENUES */}
-                {venues.map((venue, index) => (
-
-                    <Marker
-                        key={index}
-                        position={venue.position}
-                    >
-
-                        <Popup>
-
-                            <h3>{venue.name}</h3>
-
-                            {venue.rooms.map((room, roomIndex) => (
-                                <div key={roomIndex}>
-
-                                    <strong>
-                                        {room.name}
-                                    </strong>
-
-                                    <p>
-                                        {room.description}
-                                    </p>
-
-                                    <hr />
-
-                                </div>
-                            ))}
-
-                        </Popup>
-
-                    </Marker>
-
-                ))}
-
-            </MapContainer>
-
-
         </div>
     );
 }
